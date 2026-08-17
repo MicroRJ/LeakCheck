@@ -18,8 +18,6 @@ separate frontend or demo server.
 
 ## Run it
 
-From `W:\MicroRJ\LeakCheck`:
-
 ```powershell
 npm run dev
 ```
@@ -29,17 +27,4 @@ Useful checks:
 ```powershell
 npm test
 npm run build
-```
-
-## Current data flow
-
-```text
-Browser dashboard -> /api/dashboard -> leak rules -> demo company export
-```
-
-The demo export lives at `src/lib/server/data/company-export.json`. Regenerate
-it from the repository root with:
-
-```powershell
-..\elf\build\elf.exe .\scripts\dataset_generator.elf
 ```
