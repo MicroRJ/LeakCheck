@@ -7,6 +7,10 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"test": "node --test",
+		"data:generate": "node scripts/dataset-generator.js",
+		"db:migrate": "node --env-file=.env.local scripts/db/migrate.js",
+		"db:seed": "node --env-file=.env.local scripts/db/seed.js",
+		"db:setup": "npm run db:migrate && npm run db:seed",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''"
 	},
@@ -19,6 +23,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^5.3.8",
-		"bootstrap-icons": "^1.13.1"
+		"bootstrap-icons": "^1.13.1",
+		"pg": "^8.23.0"
 	}
 }
