@@ -1,4 +1,7 @@
-export function find_leaks(dataset) {
+
+// TODO(RJ): we need to try and move as much of the pre-filtering as possible from JS to SQL!
+export function find_leaks(dataset)
+{
 	const jobs_by_id = new Map();
 	const customers_by_id = new Map();
 

@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from "svelte";
+	import AppSidebar from "$lib/components/AppSidebar.svelte";
 
 	const dollar_formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
@@ -62,49 +63,7 @@
 
 
 <div class="app-shell">
-	<aside class="sidebar">
-		<div class="brand">
-			<span class="brand-mark"><i class="bi bi-shield-check"></i></span>
-			<span>LeakCheck</span>
-		</div>
-
-		<div class="nav-label">Workspace</div>
-		<nav>
-			<button class="side-link active" type="button">
-				<i class="bi bi-grid-1x2-fill"></i>
-				Overview
-			</button>
-			<button class="side-link" type="button">
-				<i class="bi bi-exclamation-diamond"></i>
-				Findings
-			</button>
-			<button class="side-link" type="button">
-				<i class="bi bi-plug"></i>
-				Integrations
-			</button>
-			<button class="side-link" type="button">
-				<i class="bi bi-buildings"></i>
-				Customers
-			</button>
-		</nav>
-
-		<div class="nav-label">System</div>
-		<nav>
-			<button class="side-link" type="button">
-				<i class="bi bi-clock-history"></i>
-				Activity
-			</button>
-			<button class="side-link" type="button">
-				<i class="bi bi-gear"></i>
-				Settings
-			</button>
-		</nav>
-
-		<div class="sidebar-footer">
-			<div class="small fw-semibold text-white">Acme HVAC</div>
-			<div class="small mt-1" style="color:#8f92ad;">2 integrations connected</div>
-		</div>
-	</aside>
+	<AppSidebar active="overview" />
 
 	<main class="main">
 		<div class="mobile-header">

@@ -51,10 +51,14 @@ export async function load_dataset(organization_id) {
 			 ORDER BY jobs.external_id`,
 			[organization_id]
 		);
+		// Each row is the union of
+		// matching jobs
+		// matching customers
+		// matching invoice applications
 		const invoices_result = await database.query(
 			`SELECT
-			   invoices.external_id  AS id,
-				jobs.external_id      AS job_id,
+			   invoices.external_id AS id,
+				jobs.external_id AS job_id,
 				customers.external_id AS customer_id,
 				invoices.status,
 				COALESCE(invoice_applications.amount_cents, invoices.total_cents) AS applied_cents,
@@ -69,6 +73,8 @@ export async function load_dataset(organization_id) {
 			 ORDER BY invoices.external_id, jobs.external_id`,
 			[organization_id]
 		);
+		// Query the latest synchronization time, note that 'max' ignores
+		// NULL
 		const analysis_result = await database.query(
 			`SELECT max(completed_at) AS analyzed_at
 			 FROM sync_runs
